@@ -5,20 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Young Explorers Travel Co.</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-line-height:1.6;
-background:#f9fafb;
-color:#333;
+background:#f8fafc;
+color:#1f2937;
 }
 
+/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
@@ -28,82 +31,147 @@ background:#0f172a;
 color:white;
 position:sticky;
 top:0;
+z-index:1000;
 }
 
 header h1{
 font-size:20px;
+letter-spacing:1px;
 }
 
 nav a{
 color:white;
 margin-left:20px;
 text-decoration:none;
-font-weight:500;
+transition:0.3s;
 }
 
+nav a:hover{
+color:#f97316;
+}
+
+/* HERO */
 .hero{
-background:linear-gradient(to right,#2563eb,#1e40af);
+background:linear-gradient(135deg,#1e3a8a,#14b8a6);
 color:white;
 text-align:center;
-padding:100px 20px;
+padding:120px 20px;
 }
 
 .hero h2{
-font-size:42px;
+font-size:50px;
 margin-bottom:15px;
 }
 
 .hero p{
-font-size:18px;
-margin-bottom:20px;
+font-size:20px;
+margin-bottom:30px;
 }
 
 .btn{
 display:inline-block;
-padding:12px 25px;
-background:white;
-color:#1e3a8a;
-border-radius:6px;
+padding:14px 30px;
+border-radius:30px;
+background:#f97316;
+color:white;
 text-decoration:none;
-font-weight:bold;
+font-weight:600;
+transition:0.3s;
 margin:5px;
 }
 
+.btn:hover{
+background:#ea580c;
+transform:scale(1.05);
+}
+
+/* SECTION */
 .section{
-padding:70px 10%;
+padding:90px 10%;
 text-align:center;
 }
 
 .section h3{
-font-size:30px;
+font-size:34px;
 margin-bottom:20px;
+color:#1e3a8a;
 }
 
+/* CARDS */
 .cards{
 display:flex;
 flex-wrap:wrap;
-gap:25px;
+gap:30px;
 justify-content:center;
-margin-top:30px;
+margin-top:40px;
 }
 
 .card{
 background:white;
-padding:25px;
-width:260px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-transition:0.3s;
+padding:30px;
+width:270px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.4s;
+border-top:5px solid #f97316;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-10px);
 }
 
-.light{
+/* STATS */
+.stats{
+background:#1e3a8a;
+color:white;
+padding:70px 10%;
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+text-align:center;
+}
+
+.stat h2{
+font-size:40px;
+}
+
+.stat p{
+font-size:18px;
+}
+
+/* GALLERY */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+margin-top:40px;
+}
+
+.gallery img{
+width:300px;
+height:200px;
+object-fit:cover;
+border-radius:15px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* TESTIMONIALS */
+.testimonial{
 background:#eef2ff;
+padding:30px;
+border-radius:15px;
+margin-top:20px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
 }
 
+/* CONTACT */
 form{
 max-width:500px;
 margin:auto;
@@ -114,49 +182,59 @@ margin-top:20px;
 }
 
 form input, form textarea{
-padding:12px;
-border:1px solid #ccc;
-border-radius:6px;
+padding:14px;
+border-radius:10px;
+border:1px solid #ddd;
 }
 
 form button{
-padding:12px;
-background:#0f172a;
+padding:14px;
+background:#1e3a8a;
 color:white;
 border:none;
-border-radius:6px;
+border-radius:30px;
 cursor:pointer;
-font-weight:bold;
+font-weight:600;
+transition:0.3s;
 }
 
+form button:hover{
+background:#f97316;
+}
+
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
 color:white;
-padding:14px 18px;
+padding:15px 20px;
 border-radius:50px;
 text-decoration:none;
 font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
 }
 
+/* FOOTER */
 footer{
 background:#0f172a;
 color:white;
 text-align:center;
-padding:20px;
+padding:25px;
 margin-top:40px;
 }
 
 @media(max-width:768px){
 .hero h2{
-font-size:28px;
+font-size:32px;
 }
-.cards{
+.cards, .stats{
 flex-direction:column;
 align-items:center;
+}
+.gallery img{
+width:100%;
 }
 }
 </style>
@@ -169,13 +247,14 @@ align-items:center;
 <nav>
 <a href="#about">About</a>
 <a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
 
 <section class="hero">
 <h2>Safe Journeys, Smart Learning</h2>
-<p>Complete School Trips & Picnics Organized in Abohar & Across Punjab</p>
+<p>Premium School Trips & Educational Tours from Abohar, Punjab</p>
 <a href="#contact" class="btn">Book Now</a>
 <a href="https://wa.me/918968199945" class="btn">WhatsApp Us</a>
 </section>
@@ -183,40 +262,71 @@ align-items:center;
 <section id="about" class="section">
 <h3>About Us</h3>
 <p>
-We specialize in organizing safe, educational and affordable school trips.
-From transportation and accommodation to food and supervision —
-we handle everything so schools can focus on learning and fun.
+We organize safe, affordable and educational school trips including travel,
+stay, meals and supervision. Our mission is to combine adventure with learning
+while ensuring complete safety and comfort.
 </p>
 </section>
 
-<section id="services" class="section light">
+<section id="services" class="section">
 <h3>Our Services</h3>
 <div class="cards">
 <div class="card">
-<h4>Transportation</h4>
-<p>Safe & verified buses with experienced drivers.</p>
+<h4>Safe Transportation</h4>
+<p>Verified buses and trained drivers.</p>
 </div>
 <div class="card">
-<h4>Stay & Accommodation</h4>
-<p>Secure and comfortable arrangements for students.</p>
+<h4>Accommodation</h4>
+<p>Secure & comfortable stays for students.</p>
 </div>
 <div class="card">
 <h4>Healthy Meals</h4>
-<p>Hygienic and nutritious food included in all packages.</p>
+<p>Nutritious and hygienic food included.</p>
 </div>
 <div class="card">
-<h4>Complete Safety</h4>
-<p>24/7 supervision with proper safety measures.</p>
+<h4>Adventure Activities</h4>
+<p>Fun, team building & educational tours.</p>
 </div>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat">
+<h2>150+</h2>
+<p>Trips Organized</p>
+</div>
+<div class="stat">
+<h2>5000+</h2>
+<p>Happy Students</p>
+</div>
+<div class="stat">
+<h2>100%</h2>
+<p>Safety Record</p>
+</div>
+</section>
+
+<section id="gallery" class="section">
+<h3>Trip Highlights</h3>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="">
+<img src="https://images.unsplash.com/photo-1526779259212-756e5f4d6e9f" alt="">
+</div>
+</section>
+
+<section class="section">
+<h3>What Schools Say</h3>
+<div class="testimonial">
+<p>“Very well organized and safe trip. Students loved the experience!”</p>
+<strong>— School Principal, Punjab</strong>
 </div>
 </section>
 
 <section id="contact" class="section">
 <h3>Contact Us</h3>
-
-<p><strong>📍 Location:</strong> Abohar, Punjab</p>
-<p><strong>📞 Phone:</strong> 8968199945</p>
-<p><strong>📧 Email:</strong> sahil896819999@gmail.com</p>
+<p><strong>📍 Abohar, Punjab</strong></p>
+<p><strong>📞 8968199945</strong></p>
+<p><strong>📧 sahil896819999@gmail.com</strong></p>
 
 <form onsubmit="submitForm(event)">
 <input type="text" placeholder="School Name" required>
@@ -228,7 +338,6 @@ we handle everything so schools can focus on learning and fun.
 </form>
 
 <p id="message"></p>
-
 </section>
 
 <a href="https://wa.me/918968199945" class="whatsapp">Chat on WhatsApp</a>
