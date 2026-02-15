@@ -19,6 +19,39 @@ scroll-behavior:smooth;
 body{
 background:#f8fafc;
 color:#1f2937;
+overflow-x:hidden;
+}
+
+/* Floating Background */
+.bg-animation{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.bg-animation span{
+position:absolute;
+display:block;
+width:40px;
+height:40px;
+background:rgba(30,58,138,0.08);
+animation:float 20s linear infinite;
+border-radius:50%;
+}
+
+.bg-animation span:nth-child(1){left:10%; animation-duration:18s;}
+.bg-animation span:nth-child(2){left:30%; animation-duration:22s;}
+.bg-animation span:nth-child(3){left:50%; animation-duration:20s;}
+.bg-animation span:nth-child(4){left:70%; animation-duration:25s;}
+.bg-animation span:nth-child(5){left:85%; animation-duration:19s;}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(0);}
+100%{transform:translateY(-10vh) scale(1);}
 }
 
 /* HEADER */
@@ -32,11 +65,6 @@ color:white;
 position:sticky;
 top:0;
 z-index:1000;
-}
-
-header h1{
-font-size:20px;
-letter-spacing:1px;
 }
 
 nav a{
@@ -59,7 +87,7 @@ padding:120px 20px;
 }
 
 .hero h2{
-font-size:50px;
+font-size:48px;
 margin-bottom:15px;
 }
 
@@ -109,7 +137,7 @@ margin-top:40px;
 .card{
 background:white;
 padding:30px;
-width:270px;
+width:260px;
 border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
 transition:0.4s;
@@ -124,7 +152,7 @@ transform:translateY(-10px);
 .stats{
 background:#1e3a8a;
 color:white;
-padding:70px 10%;
+padding:80px 10%;
 display:flex;
 justify-content:space-around;
 flex-wrap:wrap;
@@ -132,7 +160,7 @@ text-align:center;
 }
 
 .stat h2{
-font-size:40px;
+font-size:45px;
 }
 
 .stat p{
@@ -141,26 +169,25 @@ font-size:18px;
 
 /* GALLERY */
 .gallery{
-display:flex;
-flex-wrap:wrap;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-justify-content:center;
 margin-top:40px;
 }
 
 .gallery img{
-width:300px;
-height:200px;
+width:100%;
+height:220px;
 object-fit:cover;
 border-radius:15px;
 transition:0.4s;
 }
 
 .gallery img:hover{
-transform:scale(1.05);
+transform:scale(1.08);
 }
 
-/* TESTIMONIALS */
+/* TESTIMONIAL */
 .testimonial{
 background:#eef2ff;
 padding:30px;
@@ -226,21 +253,17 @@ margin-top:40px;
 }
 
 @media(max-width:768px){
-.hero h2{
-font-size:32px;
-}
-.cards, .stats{
-flex-direction:column;
-align-items:center;
-}
-.gallery img{
-width:100%;
-}
+.hero h2{font-size:32px;}
+.stats{flex-direction:column; gap:30px;}
 }
 </style>
 </head>
 
 <body>
+
+<div class="bg-animation">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
 
 <header>
 <h1>Young Explorers Travel Co.</h1>
@@ -259,66 +282,40 @@ width:100%;
 <a href="https://wa.me/918968199945" class="btn">WhatsApp Us</a>
 </section>
 
-<section id="about" class="section">
-<h3>About Us</h3>
-<p>
-We organize safe, affordable and educational school trips including travel,
-stay, meals and supervision. Our mission is to combine adventure with learning
-while ensuring complete safety and comfort.
-</p>
-</section>
-
 <section id="services" class="section">
 <h3>Our Services</h3>
 <div class="cards">
-<div class="card">
-<h4>Safe Transportation</h4>
-<p>Verified buses and trained drivers.</p>
-</div>
-<div class="card">
-<h4>Accommodation</h4>
-<p>Secure & comfortable stays for students.</p>
-</div>
-<div class="card">
-<h4>Healthy Meals</h4>
-<p>Nutritious and hygienic food included.</p>
-</div>
-<div class="card">
-<h4>Adventure Activities</h4>
-<p>Fun, team building & educational tours.</p>
-</div>
+<div class="card"><h4>Safe Transport</h4><p>Verified buses & trained drivers.</p></div>
+<div class="card"><h4>Accommodation</h4><p>Secure & comfortable stays.</p></div>
+<div class="card"><h4>Healthy Meals</h4><p>Hygienic and nutritious food.</p></div>
+<div class="card"><h4>Adventure Activities</h4><p>Fun & learning experiences.</p></div>
 </div>
 </section>
 
 <section class="stats">
 <div class="stat">
-<h2>150+</h2>
+<h2 class="counter" data-target="150">0</h2>
 <p>Trips Organized</p>
 </div>
 <div class="stat">
-<h2>5000+</h2>
+<h2 class="counter" data-target="5000">0</h2>
 <p>Happy Students</p>
 </div>
 <div class="stat">
-<h2>100%</h2>
-<p>Safety Record</p>
+<h2 class="counter" data-target="100">0</h2>
+<p>% Safety Record</p>
 </div>
 </section>
 
 <section id="gallery" class="section">
 <h3>Trip Highlights</h3>
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="">
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="">
-<img src="https://images.unsplash.com/photo-1526779259212-756e5f4d6e9f" alt="">
-</div>
-</section>
-
-<section class="section">
-<h3>What Schools Say</h3>
-<div class="testimonial">
-<p>“Very well organized and safe trip. Students loved the experience!”</p>
-<strong>— School Principal, Punjab</strong>
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<img src="https://images.unsplash.com/photo-1526779259212-756e5f4d6e9f">
+<img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429">
+<img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
 </div>
 </section>
 
@@ -333,10 +330,9 @@ while ensuring complete safety and comfort.
 <input type="text" placeholder="Contact Person" required>
 <input type="email" placeholder="Email Address" required>
 <input type="tel" placeholder="Phone Number" required>
-<textarea placeholder="Trip Details (Location, Students, Dates)" required></textarea>
+<textarea placeholder="Trip Details" required></textarea>
 <button type="submit">Submit Inquiry</button>
 </form>
-
 <p id="message"></p>
 </section>
 
@@ -347,6 +343,26 @@ while ensuring complete safety and comfort.
 </footer>
 
 <script>
+// Animated Counter
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+counters.forEach(counter => {
+const updateCount = () => {
+const target = +counter.getAttribute('data-target');
+const count = +counter.innerText;
+const increment = target / speed;
+
+if(count < target){
+counter.innerText = Math.ceil(count + increment);
+setTimeout(updateCount, 10);
+} else {
+counter.innerText = target;
+}
+};
+updateCount();
+});
+
 function submitForm(e){
 e.preventDefault();
 document.getElementById("message").innerText =
